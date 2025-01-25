@@ -36,6 +36,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
 }
 
+// Fetch and display data from the database
+$sql = "SELECT name, email, message FROM contacts";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table border='1' style='width:100%; text-align:left;'>";
+    echo "<tr><th>Name</th><th>Email</th><th>Message</th></tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+        echo "<td><a href='mailto:" . htmlspecialchars($row['email']) . "'>" . htmlspecialchars($row['email']) . "</a></td>";
+        echo "<td>" . htmlspecialchars($row['message']) . "</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No contacts found.";
+}
+
 // Close the connection
 $conn->close();
-?>

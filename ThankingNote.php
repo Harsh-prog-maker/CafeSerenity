@@ -52,7 +52,7 @@ $name = isset($_GET['name']) ? htmlspecialchars($_GET['name']) : 'Guest';
 <div class="thank-you-container">
     <h1>Thank You, <?php echo $name; ?>!</h1>
     <p>We have received your message, and we will get back to you shortly.</p>
-    <a href="Contact.html" class="back-button">Back to Contact Page</a>
+    <a href="HomePage.html" class="back-button">Back to Home Page</a>
 </div>
 
 </body>
